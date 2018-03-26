@@ -1,0 +1,26 @@
+[Unit]
+Description=NANITE's distributed currency daemon
+After=network.target
+
+[Service]
+User=nanite
+Group=nanite
+
+Type=forking
+PIDFile=/var/lib/nanited/nanited.pid
+
+ExecStart=/usr/bin/nanited -daemon -pid=/var/lib/nanited/nanited.pid \
+          -conf=/etc/nanite/nanite.conf -datadir=/var/lib/nanited
+
+ExecStop=-/usr/bin/nanite-cli -conf=/etc/nanite/nanite.conf \
+         -datadir=/var/lib/nanited stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

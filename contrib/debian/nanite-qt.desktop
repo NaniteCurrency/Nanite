@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=NANITE
+Comment=NANITE P2P Cryptocurrency
+Comment[fr]=NANITE, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=NANITE, eşten eşe kriptografik sanal para birimi
+Exec=nanite-qt %u
+Terminal=false
+Type=Application
+Icon=nanite128
+MimeType=x-scheme-handler/nanite;
+Categories=Office;Finance;
