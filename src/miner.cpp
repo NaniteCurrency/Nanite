@@ -134,7 +134,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         pblock->nVersion = GetArg("-blockversion", pblock->nVersion);
 
     // Make sure to create the correct block version after zerocoin is enabled
-   // bool fZerocoinActive = GetAdjustedTime() >= Params().Zerocoin_StartTime();
+    bool fZerocoinActive = GetAdjustedTime() >= Params().Zerocoin_StartTime();
    // if (fZerocoinActive)
     //    pblock->nVersion = 4;
    // else
