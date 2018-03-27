@@ -19,10 +19,8 @@ More information at [nanite.org](http://www.nanite.org) Visit our ANN thread at 
 <tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
 <tr><td>Max Coin Supply (PoW Phase)</td><td>43,199,500 NTT</td></tr>
 <tr><td>Max Coin Supply (PoS Phase)</td><td>Infinite</td></tr>
-<tr><td>Premine</td><td>60,000 NTT*</td></tr>
+<tr><td>Premine</td><td>3.5% NTT*</td></tr>
 </table>
-
-*60,000 NTT Premine was burned in block [279917](http://www.presstab.pw/phpexplorer/NANITE/block.php?blockhash=206d9cfe859798a0b0898ab00d7300be94de0f5469bb446cecb41c3e173a57e0)
 
 ### Reward Distribution
 
