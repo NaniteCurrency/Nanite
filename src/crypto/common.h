@@ -7,9 +7,7 @@
 
 #include <stdint.h>
 
-#if defined(HAVE_ENDIAN_H)
-#include <endian.h>
-#endif
+#include <assert.h>
 
 uint32_t static inline ReadLE32(const unsigned char* ptr)
 {
@@ -112,5 +110,4 @@ void static inline WriteBE64(unsigned char* ptr, uint64_t x)
     ptr[7] = x;
 #endif
 }
-
 #endif // BITCOIN_CRYPTO_COMMON_H

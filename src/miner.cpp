@@ -111,8 +111,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 	case ALGO_LYRA2RE:
 	    pblock->nVersion |= BLOCK_VERSION_LYRA2RE;
             break;
-        case ALGO_SCRYPT:
-            pblock->nVersion |= BLOCK_VERSION_SCRYPT;
+        case ALGO_ARGON2D:
+            pblock->nVersion |= BLOCK_VERSION_ARGON2D;
             break;
         case ALGO_GROESTL:
             pblock->nVersion |= BLOCK_VERSION_GROESTL;

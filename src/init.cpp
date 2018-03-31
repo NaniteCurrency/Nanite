@@ -770,8 +770,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     // determine mining Algo
     std::string strAlgo = GetArg("-algo", "x17");
     transform(strAlgo.begin(),strAlgo.end(),strAlgo.begin(),::tolower);
-    if (strAlgo == "scrypt")
-        miningAlgo = ALGO_SCRYPT;
+    if (strAlgo == "argon2d")
+        miningAlgo = ALGO_ARGON2D;
     else if (strAlgo == "groestl")
         miningAlgo = ALGO_GROESTL;
     else if (strAlgo == "x17")

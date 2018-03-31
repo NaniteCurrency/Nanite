@@ -258,7 +258,13 @@ am_crypto_libbitcoin_crypto_a_OBJECTS =  \
 	crypto/crypto_libbitcoin_crypto_a-shavite.$(OBJEXT) \
 	crypto/crypto_libbitcoin_crypto_a-sph_sha2big.$(OBJEXT) \
 	crypto/crypto_libbitcoin_crypto_a-Sponge.$(OBJEXT) \
-	crypto/crypto_libbitcoin_crypto_a-whirlpool.$(OBJEXT)
+	crypto/crypto_libbitcoin_crypto_a-whirlpool.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-argon2.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-best.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-core.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-encoding.$(OBJEXT) \
+	crypto/argon2/crypto_libbitcoin_crypto_a-thread.$(OBJEXT)
 crypto_libbitcoin_crypto_a_OBJECTS =  \
 	$(am_crypto_libbitcoin_crypto_a_OBJECTS)
 libbitcoin_cli_a_AR = $(AR) $(ARFLAGS)
@@ -1797,6 +1803,7 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/hashqubit.h \
   crypto/hashquark.h \
   crypto/hashblake.h \
+  crypto/hashargon2d.h \
   crypto/hashx17.h \
   crypto/hashx13.h \
   crypto/hashx15.h \
@@ -1843,7 +1850,19 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_types.h \
   crypto/Sponge.h \
   crypto/Sponge.c \
-  crypto/whirlpool.c
+  crypto/whirlpool.c \
+  crypto/argon2/argon2.c \
+  crypto/argon2/argon2.h \
+  crypto/argon2/best.c \
+  crypto/argon2/blake2.h \
+  crypto/argon2/blake2b.c \
+  crypto/argon2/blake2-impl.h \
+  crypto/argon2/core.c \
+  crypto/argon2/core.h \
+  crypto/argon2/encoding.c \
+  crypto/argon2/encoding.h \
+  crypto/argon2/thread.c \
+  crypto/argon2/thread.h
 
 
 # libzerocoin library
@@ -2515,6 +2534,30 @@ crypto/crypto_libbitcoin_crypto_a-Sponge.$(OBJEXT):  \
 	crypto/$(am__dirstamp) crypto/$(DEPDIR)/$(am__dirstamp)
 crypto/crypto_libbitcoin_crypto_a-whirlpool.$(OBJEXT):  \
 	crypto/$(am__dirstamp) crypto/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/$(am__dirstamp):
+	@$(MKDIR_P) crypto/argon2
+	@: > crypto/argon2/$(am__dirstamp)
+crypto/argon2/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) crypto/argon2/$(DEPDIR)
+	@: > crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-argon2.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-best.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-core.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-encoding.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+crypto/argon2/crypto_libbitcoin_crypto_a-thread.$(OBJEXT):  \
+	crypto/argon2/$(am__dirstamp) \
+	crypto/argon2/$(DEPDIR)/$(am__dirstamp)
 
 crypto/libbitcoin_crypto.a: $(crypto_libbitcoin_crypto_a_OBJECTS) $(crypto_libbitcoin_crypto_a_DEPENDENCIES) $(EXTRA_crypto_libbitcoin_crypto_a_DEPENDENCIES) crypto/$(am__dirstamp)
 	$(AM_V_at)-rm -f crypto/libbitcoin_crypto.a
@@ -3149,6 +3192,7 @@ mostlyclean-compile:
 	-rm -f compat/*.lo
 	-rm -f crypto/*.$(OBJEXT)
 	-rm -f crypto/*.lo
+	-rm -f crypto/argon2/*.$(OBJEXT)
 	-rm -f libzerocoin/*.$(OBJEXT)
 	-rm -f primitives/*.$(OBJEXT)
 	-rm -f primitives/*.lo
@@ -3298,6 +3342,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@crypto/$(DEPDIR)/libbitcoinconsensus_la-sha1.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@crypto/$(DEPDIR)/libbitcoinconsensus_la-sha256.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@crypto/$(DEPDIR)/libbitcoinconsensus_la-sha512.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@libzerocoin/$(DEPDIR)/Accumulator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@libzerocoin/$(DEPDIR)/AccumulatorProofOfKnowledge.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@libzerocoin/$(DEPDIR)/Coin.Po@am__quote@
@@ -3821,6 +3871,90 @@ crypto/crypto_libbitcoin_crypto_a-whirlpool.obj: crypto/whirlpool.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/whirlpool.c' object='crypto/crypto_libbitcoin_crypto_a-whirlpool.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/crypto_libbitcoin_crypto_a-whirlpool.obj `if test -f 'crypto/whirlpool.c'; then $(CYGPATH_W) 'crypto/whirlpool.c'; else $(CYGPATH_W) '$(srcdir)/crypto/whirlpool.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-argon2.o: crypto/argon2/argon2.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-argon2.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-argon2.o `test -f 'crypto/argon2/argon2.c' || echo '$(srcdir)/'`crypto/argon2/argon2.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/argon2.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-argon2.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-argon2.o `test -f 'crypto/argon2/argon2.c' || echo '$(srcdir)/'`crypto/argon2/argon2.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-argon2.obj: crypto/argon2/argon2.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-argon2.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-argon2.obj `if test -f 'crypto/argon2/argon2.c'; then $(CYGPATH_W) 'crypto/argon2/argon2.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/argon2.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-argon2.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/argon2.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-argon2.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-argon2.obj `if test -f 'crypto/argon2/argon2.c'; then $(CYGPATH_W) 'crypto/argon2/argon2.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/argon2.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-best.o: crypto/argon2/best.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-best.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-best.o `test -f 'crypto/argon2/best.c' || echo '$(srcdir)/'`crypto/argon2/best.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/best.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-best.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-best.o `test -f 'crypto/argon2/best.c' || echo '$(srcdir)/'`crypto/argon2/best.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-best.obj: crypto/argon2/best.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-best.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-best.obj `if test -f 'crypto/argon2/best.c'; then $(CYGPATH_W) 'crypto/argon2/best.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/best.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-best.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/best.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-best.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-best.obj `if test -f 'crypto/argon2/best.c'; then $(CYGPATH_W) 'crypto/argon2/best.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/best.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.o: crypto/argon2/blake2b.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.o `test -f 'crypto/argon2/blake2b.c' || echo '$(srcdir)/'`crypto/argon2/blake2b.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/blake2b.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.o `test -f 'crypto/argon2/blake2b.c' || echo '$(srcdir)/'`crypto/argon2/blake2b.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.obj: crypto/argon2/blake2b.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.obj `if test -f 'crypto/argon2/blake2b.c'; then $(CYGPATH_W) 'crypto/argon2/blake2b.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/blake2b.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-blake2b.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/blake2b.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-blake2b.obj `if test -f 'crypto/argon2/blake2b.c'; then $(CYGPATH_W) 'crypto/argon2/blake2b.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/blake2b.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-core.o: crypto/argon2/core.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-core.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-core.o `test -f 'crypto/argon2/core.c' || echo '$(srcdir)/'`crypto/argon2/core.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/core.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-core.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-core.o `test -f 'crypto/argon2/core.c' || echo '$(srcdir)/'`crypto/argon2/core.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-core.obj: crypto/argon2/core.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-core.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-core.obj `if test -f 'crypto/argon2/core.c'; then $(CYGPATH_W) 'crypto/argon2/core.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/core.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-core.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/core.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-core.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-core.obj `if test -f 'crypto/argon2/core.c'; then $(CYGPATH_W) 'crypto/argon2/core.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/core.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-encoding.o: crypto/argon2/encoding.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-encoding.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-encoding.o `test -f 'crypto/argon2/encoding.c' || echo '$(srcdir)/'`crypto/argon2/encoding.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/encoding.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-encoding.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-encoding.o `test -f 'crypto/argon2/encoding.c' || echo '$(srcdir)/'`crypto/argon2/encoding.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-encoding.obj: crypto/argon2/encoding.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-encoding.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-encoding.obj `if test -f 'crypto/argon2/encoding.c'; then $(CYGPATH_W) 'crypto/argon2/encoding.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/encoding.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-encoding.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/encoding.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-encoding.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-encoding.obj `if test -f 'crypto/argon2/encoding.c'; then $(CYGPATH_W) 'crypto/argon2/encoding.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/encoding.c'; fi`
+
+crypto/argon2/crypto_libbitcoin_crypto_a-thread.o: crypto/argon2/thread.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-thread.o -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-thread.o `test -f 'crypto/argon2/thread.c' || echo '$(srcdir)/'`crypto/argon2/thread.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/thread.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-thread.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-thread.o `test -f 'crypto/argon2/thread.c' || echo '$(srcdir)/'`crypto/argon2/thread.c
+
+crypto/argon2/crypto_libbitcoin_crypto_a-thread.obj: crypto/argon2/thread.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -MT crypto/argon2/crypto_libbitcoin_crypto_a-thread.obj -MD -MP -MF crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Tpo -c -o crypto/argon2/crypto_libbitcoin_crypto_a-thread.obj `if test -f 'crypto/argon2/thread.c'; then $(CYGPATH_W) 'crypto/argon2/thread.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/thread.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Tpo crypto/argon2/$(DEPDIR)/crypto_libbitcoin_crypto_a-thread.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='crypto/argon2/thread.c' object='crypto/argon2/crypto_libbitcoin_crypto_a-thread.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(crypto_libbitcoin_crypto_a_CPPFLAGS) $(CPPFLAGS) $(crypto_libbitcoin_crypto_a_CFLAGS) $(CFLAGS) -c -o crypto/argon2/crypto_libbitcoin_crypto_a-thread.obj `if test -f 'crypto/argon2/thread.c'; then $(CYGPATH_W) 'crypto/argon2/thread.c'; else $(CYGPATH_W) '$(srcdir)/crypto/argon2/thread.c'; fi`
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -8294,6 +8428,8 @@ distclean-generic:
 	-rm -f compat/$(am__dirstamp)
 	-rm -f crypto/$(DEPDIR)/$(am__dirstamp)
 	-rm -f crypto/$(am__dirstamp)
+	-rm -f crypto/argon2/$(DEPDIR)/$(am__dirstamp)
+	-rm -f crypto/argon2/$(am__dirstamp)
 	-rm -f libzerocoin/$(DEPDIR)/$(am__dirstamp)
 	-rm -f libzerocoin/$(am__dirstamp)
 	-rm -f primitives/$(DEPDIR)/$(am__dirstamp)
@@ -8321,7 +8457,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool clean-local mostlyclean-am
 
 distclean: distclean-recursive
-	-rm -rf ./$(DEPDIR) compat/$(DEPDIR) crypto/$(DEPDIR) libzerocoin/$(DEPDIR) primitives/$(DEPDIR) qt/$(DEPDIR) qt/test/$(DEPDIR) script/$(DEPDIR) test/$(DEPDIR) zmq/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) compat/$(DEPDIR) crypto/$(DEPDIR) crypto/argon2/$(DEPDIR) libzerocoin/$(DEPDIR) primitives/$(DEPDIR) qt/$(DEPDIR) qt/test/$(DEPDIR) script/$(DEPDIR) test/$(DEPDIR) zmq/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -8367,7 +8503,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-recursive
-	-rm -rf ./$(DEPDIR) compat/$(DEPDIR) crypto/$(DEPDIR) libzerocoin/$(DEPDIR) primitives/$(DEPDIR) qt/$(DEPDIR) qt/test/$(DEPDIR) script/$(DEPDIR) test/$(DEPDIR) zmq/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) compat/$(DEPDIR) crypto/$(DEPDIR) crypto/argon2/$(DEPDIR) libzerocoin/$(DEPDIR) primitives/$(DEPDIR) qt/$(DEPDIR) qt/test/$(DEPDIR) script/$(DEPDIR) test/$(DEPDIR) zmq/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

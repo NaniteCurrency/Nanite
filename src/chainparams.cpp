@@ -107,7 +107,7 @@ public:
         vAlertPubKey = ParseHex("04cb2b9206dec25c871410f4a32c3fc074b26e642fa6dc2c3c5d8dac30ab4faf1ff4f9cce705b14a2f67321f43af82513adca6d6efb713cbebfbe7e2b269141d67");
                                  
         nDefaultPort = 5818;
-    	bnProofOfWorkLimit[ALGO_SCRYPT]  = ~uint256(0) >> 20;
+    	bnProofOfWorkLimit[ALGO_ARGON2D] = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_GROESTL] = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_X17]     = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_LYRA2RE] = ~uint256(0) >> 20;
@@ -251,7 +251,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // NANITE: 1 day
         nTargetSpacing = 1.5 * 60;  // NANITE: 1 minute
-    	bnProofOfWorkLimit[ALGO_SCRYPT]  = ~uint256(0) >> 20;
+    	bnProofOfWorkLimit[ALGO_ARGON2D] = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_GROESTL] = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_X17]     = ~uint256(0) >> 20;
     	bnProofOfWorkLimit[ALGO_LYRA2RE] = ~uint256(0) >> 20;
@@ -352,7 +352,7 @@ public:
         nMinerThreads = 1;
         nTargetTimespan = 24 * 60 * 60; // NANITE: 1 day
         nTargetSpacing = 1 * 60;        // NANITE: 1 minutes
-    	bnProofOfWorkLimit[ALGO_SCRYPT]  = ~uint256(0) >> 1;
+    	bnProofOfWorkLimit[ALGO_ARGON2D] = ~uint256(0) >> 1;
     	bnProofOfWorkLimit[ALGO_GROESTL] = ~uint256(0) >> 1;
     	bnProofOfWorkLimit[ALGO_X17]     = ~uint256(0) >> 1;
     	bnProofOfWorkLimit[ALGO_LYRA2RE] = ~uint256(0) >> 1;

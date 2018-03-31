@@ -1,4 +1,0 @@
-qt/qt_libbitcoinqt_a-qrc_nanite_locale.o: qt/qrc_nanite_locale.cpp \
- /usr/include/stdc-predef.h
-
-/usr/include/stdc-predef.h:

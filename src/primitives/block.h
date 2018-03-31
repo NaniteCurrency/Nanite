@@ -15,7 +15,7 @@
 enum
   {
     
-    ALGO_SCRYPT  = 0,
+    ALGO_ARGON2D = 0,
     ALGO_X17	 = 1,
     ALGO_LYRA2RE = 2,
     ALGO_BLAKE   = 3,
@@ -32,7 +32,7 @@ enum
     BLOCK_VERSION_ALGO_BROKEN    = (10 << 11),
     BLOCK_VERSION_ALGO           = (15 << 11),
     BLOCK_VERSION_X17		 = (1  << 11),
-    BLOCK_VERSION_SCRYPT         = (2  << 11),
+    BLOCK_VERSION_ARGON2D        = (2  << 11),
     BLOCK_VERSION_GROESTL        = (3  << 11),
     BLOCK_VERSION_BLAKE 	 = (4  << 11),
     BLOCK_VERSION_LYRA2RE	 = (10 << 11),
@@ -42,8 +42,8 @@ inline int GetAlgo(int nVersion)
 {
     switch (nVersion)
     {
-        case BLOCK_VERSION_SCRYPT:
-            return ALGO_SCRYPT;
+        case BLOCK_VERSION_ARGON2D:
+            return ALGO_ARGON2D;
         case BLOCK_VERSION_GROESTL:
             return ALGO_GROESTL;
         case BLOCK_VERSION_LYRA2RE:
@@ -60,8 +60,8 @@ inline std::string GetAlgoName(int Algo)
 {
     switch (Algo)
     {
-        case ALGO_SCRYPT:
-            return std::string("scrypt");
+        case ALGO_ARGON2D:
+            return std::string("argon2d");
         case ALGO_GROESTL:
             return std::string("groestl");
         case ALGO_LYRA2RE:
@@ -90,7 +90,7 @@ class CBlockHeader
 {
 public:
     // header
-    static const int32_t CURRENT_VERSION=4;
+    static const int32_t CURRENT_VERSION = BLOCK_VERSION_DEFAULT;
     int32_t nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
@@ -115,10 +115,7 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
-
-        //zerocoin active, header changes to include accumulator checksum
-        if(nVersion > 3)
-            READWRITE(nAccumulatorCheckpoint);
+        READWRITE(nAccumulatorCheckpoint);
     }
 
     void SetNull()

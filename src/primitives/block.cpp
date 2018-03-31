@@ -7,7 +7,7 @@
 #include "primitives/block.h"
 
 #include "hash.h"
-#include "crypto/scrypt.h"
+#include "crypto/hashargon2d.h"
 #include "crypto/hashgroestl.h"
 #include "crypto/hashblake.h"
 #include "crypto/hashx17.h"
@@ -18,20 +18,6 @@
 #include "utilstrencodings.h"
 #include "util.h"
 
-/*uint256 CBlockHeader::GetHash() const
-{
-  //  if(nVersion < 4)
-   //     return HashX17(BEGIN(nVersion), END(nNonce));
-
-    return HashX17(BEGIN(nVersion), END(nAccumulatorCheckpoint));
-}
-*/
-uint256 CBlockHeader::GetScryptHash() const
-{
-        uint256 thash;
-        //scrypt_1024_1_1_256(BEGIN(nVersion), BEGIN(thash));
-        return thash;
-}
 
 uint256 CBlockHeader::GetLyraHash() const
 {
@@ -45,8 +31,8 @@ uint256 CBlockHeader::GetPoWHash(int algo) const
 {
         switch (algo)
         {
-            case ALGO_SCRYPT:
-                return GetScryptHash();
+            case ALGO_ARGON2D:
+                return HashArgon2d(BEGIN(nVersion), END(nAccumulatorCheckpoint));
             case ALGO_GROESTL:
                 return HashGroestl(BEGIN(nVersion), END(nAccumulatorCheckpoint));
             case ALGO_BLAKE:

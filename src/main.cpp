@@ -108,7 +108,7 @@ CScript COINBASE_FLAGS;
 
 const string strMessageMagic = "DarkNet Signed Message:\n";
 
-int miningAlgo = ALGO_SCRYPT;
+int miningAlgo = ALGO_X17;
 
 // Internal stuff
 namespace

@@ -241,7 +241,7 @@ UniValue getmininginfo(const UniValue& params, bool fHelp)
     obj.push_back(Pair("pow_algo",           GetAlgoName(miningAlgo)));
     obj.push_back(Pair("difficulty",         (double)GetDifficulty(NULL, miningAlgo)));
     obj.push_back(Pair("difficulty_x17", (double)GetDifficulty(NULL, ALGO_X17)));
-    obj.push_back(Pair("difficulty_scrypt",  (double)GetDifficulty(NULL, ALGO_SCRYPT)));
+    obj.push_back(Pair("difficulty_argon2d",  (double)GetDifficulty(NULL, ALGO_ARGON2D)));
     obj.push_back(Pair("difficulty_groestl", (double)GetDifficulty(NULL, ALGO_GROESTL)));
     obj.push_back(Pair("difficulty_lyra2re",   (double)GetDifficulty(NULL, ALGO_LYRA2RE)));
     obj.push_back(Pair("difficulty_blake",   (double)GetDifficulty(NULL, ALGO_BLAKE)));

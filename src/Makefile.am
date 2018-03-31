@@ -285,6 +285,7 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/hashqubit.h \
   crypto/hashquark.h \
   crypto/hashblake.h \
+  crypto/hashargon2d.h \
   crypto/hashx17.h \
   crypto/hashx13.h \
   crypto/hashx15.h \
@@ -331,7 +332,19 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_types.h \
   crypto/Sponge.h \
   crypto/Sponge.c \
-  crypto/whirlpool.c
+  crypto/whirlpool.c \
+  crypto/argon2/argon2.c \
+  crypto/argon2/argon2.h \
+  crypto/argon2/best.c \
+  crypto/argon2/blake2.h \
+  crypto/argon2/blake2b.c \
+  crypto/argon2/blake2-impl.h \
+  crypto/argon2/core.c \
+  crypto/argon2/core.h \
+  crypto/argon2/encoding.c \
+  crypto/argon2/encoding.h \
+  crypto/argon2/thread.c \
+  crypto/argon2/thread.h
 
 # libzerocoin library
 libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
