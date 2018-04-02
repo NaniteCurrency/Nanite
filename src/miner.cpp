@@ -106,27 +106,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     CBlock* pblock = &pblocktemplate->block; // pointer for convenience
 
     pblock->nVersion = BLOCK_VERSION_DEFAULT;
-    switch (algo)
-    {
-	case ALGO_LYRA2RE:
-	    pblock->nVersion |= BLOCK_VERSION_LYRA2RE;
-            break;
-        case ALGO_ARGON2D:
-            pblock->nVersion |= BLOCK_VERSION_ARGON2D;
-            break;
-        case ALGO_GROESTL:
-            pblock->nVersion |= BLOCK_VERSION_GROESTL;
-            break;
-	case ALGO_X17:
-	    pblock->nVersion |= BLOCK_VERSION_X17;
-	    break;
-	case ALGO_BLAKE:
-	    pblock->nVersion |= BLOCK_VERSION_BLAKE;
-	    break;
-        default:
-            error("CreateNewBlock: bad algo");
-            return NULL;
-   }
+    pblock->SetAlgo(algo);
 
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios

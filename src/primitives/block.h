@@ -29,7 +29,6 @@ enum
     BLOCK_VERSION_DEFAULT        = 2,
 
     // algo
-    BLOCK_VERSION_ALGO_BROKEN    = (10 << 11),
     BLOCK_VERSION_ALGO           = (15 << 11),
     BLOCK_VERSION_X17		 = (1  << 11),
     BLOCK_VERSION_ARGON2D        = (2  << 11),
@@ -40,7 +39,7 @@ enum
 
 inline int GetAlgo(int nVersion)
 {
-    switch (nVersion)
+    switch (nVersion & BLOCK_VERSION_ALGO)
     {
         case BLOCK_VERSION_ARGON2D:
             return ALGO_ARGON2D;
@@ -55,6 +54,8 @@ inline int GetAlgo(int nVersion)
     }
     return ALGO_X17;
 }
+
+
 
 inline std::string GetAlgoName(int Algo)
 {
@@ -140,6 +141,32 @@ public:
     uint256 GetPoWHash(int algo) const;
 
     int GetAlgo() const { return ::GetAlgo(nVersion); }
+
+    inline int SetAlgo(int algo)
+    {
+	switch (algo)
+	{
+	   case ALGO_LYRA2RE:
+		    nVersion |= BLOCK_VERSION_LYRA2RE;
+		    break;
+	   case ALGO_ARGON2D:
+		    nVersion |= BLOCK_VERSION_ARGON2D;
+		    break;
+	   case ALGO_GROESTL:
+		    nVersion |= BLOCK_VERSION_GROESTL;
+		    break;
+	   case ALGO_X17:
+		    nVersion |= BLOCK_VERSION_X17;
+		    break;
+	   case ALGO_BLAKE:
+		    nVersion |= BLOCK_VERSION_BLAKE;
+		    break;
+	   default:
+		    error("CreateNewBlock: bad algo");
+		    return NULL;
+	   }
+	}
+
 
     int64_t GetBlockTime() const
     {
