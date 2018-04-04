@@ -122,7 +122,7 @@ public:
         nTargetSpacing = 1.5 * 60;  // NANITE: 1.5 minute
         nMaturity = 100;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 21000000 * COIN;
+        nMaxMoneyOut = 30000000000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 14000;
