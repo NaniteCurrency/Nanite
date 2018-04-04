@@ -142,7 +142,7 @@ public:
 
     int GetAlgo() const { return ::GetAlgo(nVersion); }
 
-    inline int SetAlgo(int algo)
+    inline void SetAlgo(int algo)
     {
 	switch (algo)
 	{
@@ -162,8 +162,7 @@ public:
 		    nVersion |= BLOCK_VERSION_BLAKE;
 		    break;
 	   default:
-		    error("CreateNewBlock: bad algo");
-		    return NULL;
+		    break;
 	   }
 	}
 
