@@ -155,14 +155,14 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nVersion = genesis.SetAlgo(ALGO_X17);
+        genesis.SetAlgo(ALGO_X17);
         genesis.nTime = 1520553600; // Friday, March 9, 2018 12:00:00 AM
         genesis.nBits = bnProofOfWorkLimit[ALGO_X17].GetCompact();
-        genesis.nNonce = 7703983;
+        genesis.nNonce = 7979600;
 
         hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
 
-       /* while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
+   /*  while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
             if (++genesis.nNonce==0) break;
             hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
         }
@@ -173,8 +173,8 @@ public:
         printf("genesis.nTime = %u \n", genesis.nTime);
         printf("genesis.nNonce = %u \n", genesis.nNonce);
         genesis.print();
-     */
-        assert(hashGenesisBlock == uint256("0x00000839101eae5aa45d63346d852d532ab5d98c15a501368632b53a3f51eb3b"));
+    */ 
+        assert(hashGenesisBlock == uint256("0x00000888e224fcd0db88ab1789fe10463d4a385d2ccb4c1fb0e374581a497bc8"));
         assert(genesis.hashMerkleRoot == uint256("0xeb1a92db7bdaf6a90f89f658a72dd03654d8c6df037ea99b810573323c036cc4"));
 
         vSeeds.push_back(CDNSSeedData("nanite.org", "node1.nanite.org"));     // Primary DNS Seeder from Nanite
@@ -271,11 +271,11 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1520553600;
-        genesis.nNonce = 7703983;
+        genesis.nNonce = 7979600;
 
         hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
 
-      /* while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
+     /*while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
             if (++genesis.nNonce==0) break;
             hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
         }
@@ -288,7 +288,7 @@ public:
         genesis.print();
    */
    
-        assert(hashGenesisBlock == uint256("0x00000839101eae5aa45d63346d852d532ab5d98c15a501368632b53a3f51eb3b"));
+        assert(hashGenesisBlock == uint256("0x00000888e224fcd0db88ab1789fe10463d4a385d2ccb4c1fb0e374581a497bc8"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -359,11 +359,11 @@ public:
     	bnProofOfWorkLimit[ALGO_BLAKE]   = ~uint256(0) >> 1;
         genesis.nTime = 1454124731;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 12346;
+        genesis.nNonce = 12345;
 
         hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
 
-       /*while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
+      /* while (hashGenesisBlock > bnProofOfWorkLimit[ALGO_X17]){
             if (++genesis.nNonce==0) break;
             hashGenesisBlock = genesis.GetPoWHash(ALGO_X17);
         }
@@ -377,7 +377,7 @@ public:
     */
 
         nDefaultPort = 51476;
-        assert(hashGenesisBlock == uint256("0x0e3fc7437123823858a357b416c9f630701a559ec3ad0e244e12541b8be1d914"));
+        assert(hashGenesisBlock == uint256("0x2c3a13cfc030adeb4ab4e0ad9d03c89d49e71670417e63246934a73d8f5f8015"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.

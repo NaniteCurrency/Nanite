@@ -95,7 +95,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         BlockReading = BlockReading->pprev;
     }
 	if (!CountBlocks)
-		return Params().ProofOfWorkLimit(miningAlgo).GetCompact()	
+		return Params().ProofOfWorkLimit(miningAlgo).GetCompact();	
     uint256 bnNew(PastDifficultyAverage);
 
     int64_t _nTargetTimespan = CountBlocks * Params().TargetSpacing();
