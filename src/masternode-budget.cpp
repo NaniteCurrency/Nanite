@@ -27,11 +27,11 @@ int nSubmittedFinalBudget;
 
 int GetBudgetPaymentCycleBlocks()
 {
-    // Amount of blocks in a months period of time (using 1 minutes per) = (60*24*30)
-    if (Params().NetworkID() == CBaseChainParams::MAIN) return 43200;
+    // Amount of blocks in a months period of time (using 1.5 minutes per) = (40*24*30)
+    if (Params().NetworkID() == CBaseChainParams::MAIN) return 28800;
     //for testing purposes
 
-    return 144; //ten times per day
+    return 96; //ten times per day
 }
 
 bool IsBudgetCollateralValid(uint256 nTxCollateralHash, uint256 nExpectedHash, std::string& strError, int64_t& nTime, int& nConf)

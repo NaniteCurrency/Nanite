@@ -30,7 +30,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     uint256 PastDifficultyAveragePrev;
 
     if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < PastBlocksMin) {
-        return Params().ProofOfWorkLimit(ALGO_X17).GetCompact(); // genesis block
+        return Params().ProofOfWorkLimit(miningAlgo).GetCompact(); // genesis block
     }
 
     if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
@@ -64,6 +64,13 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         if (PastBlocksMax > 0 && i > PastBlocksMax) {
             break;
         }
+
+	// we only consider blocks for the configured mining algo here
+        if (GetAlgo(BlockReading->nVersion) != algo) {
+        	BlockReading = BlockReading->pprev;
+            continue;
+        }
+
         CountBlocks++;
 
         if (CountBlocks <= PastBlocksMin) {
@@ -87,7 +94,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         }
         BlockReading = BlockReading->pprev;
     }
-
+	if (!CountBlocks)
+		return Params().ProofOfWorkLimit(miningAlgo).GetCompact()	
     uint256 bnNew(PastDifficultyAverage);
 
     int64_t _nTargetTimespan = CountBlocks * Params().TargetSpacing();

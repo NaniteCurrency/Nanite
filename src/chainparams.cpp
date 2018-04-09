@@ -155,7 +155,7 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nVersion = 1;
+        genesis.nVersion = genesis.SetAlgo(ALGO_X17);
         genesis.nTime = 1520553600; // Friday, March 9, 2018 12:00:00 AM
         genesis.nBits = bnProofOfWorkLimit[ALGO_X17].GetCompact();
         genesis.nNonce = 7703983;
