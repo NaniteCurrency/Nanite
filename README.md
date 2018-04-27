@@ -10,7 +10,7 @@ NANITE is a cutting edge cryptocurrency, with many features not available in mos
   technology used to secure the network and provide the above features, each Masternode is secured
   with a collateral of 10K NTT.
 
-More information at [nanite.org](http://www.nanite.org) Visit our ANN thread at [BitcoinTalk](http://www.bitcointalk.org/index.php?topic=1262920)
+More information at [nanite.org](http://www.nanite.org) Visit our ANN thread at [BitcoinTalk](http://www.bitcointalk.org/)
 
 ### Coin Specs
 <table>
